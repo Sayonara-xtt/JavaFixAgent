@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javafix.shop.mapper.OrderMapper">
+    <!-- 条件更新将状态检查与写入合为一步，避免先查后改导致重复恢复库存。 -->
+    <update id="cancelCreated">
+        UPDATE orders
+           SET status = 'CANCELLED'
+         WHERE id = #{id}
+           AND status = 'CREATED'
+           AND deleted = 0
+    </update>
+</mapper>

@@ -25,6 +25,7 @@ target/
 *.war
 *.ear
 .mvn/timing.properties
+/lib/
 
 # IDEs and editors
 .idea/

@@ -3,9 +3,9 @@ spring:
     name: shop-service
   datasource:
     # 默认值仅用于本地开发；共享环境必须通过环境变量注入真实连接信息。
-    url: jdbc:mysql://${DB_HOST:127.0.0.1}:${DB_PORT:3306}/${DB_NAME:javafix_shop}?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false
-    username: ${DB_USERNAME:javafix}
-    password: ${DB_PASSWORD:}
+    url: jdbc:mysql://${DB_HOST:127.0.0.1}:${DB_PORT:3306}/${DB_NAME:javafix_shop_test}?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:123456}
     driver-class-name: com.mysql.cj.jdbc.Driver
   flyway:
     enabled: true
@@ -14,3 +14,25 @@ spring:
 mybatis-plus:
   # XML 映射文件统一放在 resources/mapper 下。
   mapper-locations: classpath*:mapper/**/*.xml
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+
+# Knife4j / springdoc：文档页 http://localhost:8080/doc.html
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+
+knife4j:
+  # Boot 3.5 + 升级后的 springdoc：关闭增强，避免 Knife4jOpenApiCustomizer 兼容问题
+  enable: false
+  setting:
+    language: zh_cn
