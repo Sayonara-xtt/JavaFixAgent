@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javafix.shop.mapper.ProductMapper">
+
+    <!--
+      下单扣库存：WHERE stock >= quantity 保证不会扣成负数；
+      deleted = 0 排除已逻辑删除商品；version+1 便于观察并发更新。
+    -->
+    <update id="decreaseStock">
+        UPDATE product
+           SET stock = stock - #{quantity},
+               version = version + 1
+         WHERE id = #{productId}
+           AND deleted = 0
+           AND stock &gt;= #{quantity}
+    </update>
+
+    <!-- 取消订单还库存：仅恢复未删除商品的库存。 -->
+    <update id="increaseStock">
+        UPDATE product
+           SET stock = stock + #{quantity},
+               version = version + 1
+         WHERE id = #{productId}
+           AND deleted = 0
+    </update>
+
+</mapper>

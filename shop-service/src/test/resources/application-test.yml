@@ -1,8 +1,7 @@
-# 本配置只连接本机的隔离测试库；可通过环境变量覆盖全部连接信息。
+# 连接信息由 MySqlTestConfiguration 的 @ServiceConnection 提供。
+# 无容器配置时也禁止回退到本机数据库，宁可启动失败。
 spring:
   datasource:
-    url: ${JAVAFIX_TEST_DB_URL:jdbc:mysql://127.0.0.1:3306/javafix_shop_test?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false}
-    username: ${JAVAFIX_TEST_DB_USERNAME:javafix_test}
-    password: ${JAVAFIX_TEST_DB_PASSWORD:javafix_test}
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
+    url: jdbc:mysql://127.0.0.1:1/testcontainers_required
+    username: unused
+    password: unused
