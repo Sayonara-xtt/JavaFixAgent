@@ -13,17 +13,21 @@ Keep these roles separate:
 
 ## Current phase
 
-The repository is currently in **Phase 1 — Repository Initialization**.
+The repository is currently in **Phase 2 — Spring Boot Baseline**.
 
-During Phase 1:
+During Phase 2:
 
-- Maintain only the repository structure and project documentation.
-- Do not add Spring Boot business code.
+- Maintain the Java 21, Spring Boot, MyBatis-Plus, Flyway, Maven, and local
+  MySQL infrastructure baseline in `shop-service/`.
+- Keep the startup integration test connected to the dedicated local MySQL
+  test database; do not silently replace it with H2.
+- Do not add User, Product, Order, OrderItem, REST endpoints, or other Phase 3
+  business behavior.
 - Do not add Python agent implementation code.
 - Do not introduce LangChain, LangGraph, MCP, multi-agent orchestration, RAG,
   vector databases, or Redis.
 
-Proceed to Phase 2 only after explicit user approval.
+Proceed to Phase 3 only after explicit user approval.
 
 ## Architecture constraints
 
@@ -52,4 +56,3 @@ Proceed to Phase 2 only after explicit user approval.
 - Enforce command timeouts and report timeout, cancellation, and fatal errors as
   non-success outcomes.
 - Do not report success solely because the model requested to finish.
-

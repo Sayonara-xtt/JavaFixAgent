@@ -28,6 +28,7 @@ target/
 
 # IDEs and editors
 .idea/
+out/
 .vscode/
 *.iml
 *.ipr

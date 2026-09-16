@@ -39,15 +39,48 @@ javafix-agent/
 - Maven, JUnit 5, Mockito, and Flyway
 - MySQL 8.x
 
-Docker-based isolation is planned for a later phase.
+Phase 2 tests use a dedicated database and account in the locally installed
+MySQL 8 instance. Docker-based isolation remains a later option.
 
 ## Current phase
 
-**Phase 1 — Repository Initialization**
+**Phase 2 — Spring Boot Baseline**
 
-Only the monorepo structure and project-level documentation exist at this
-stage. There is no Java business implementation or Python agent implementation
-yet.
+The Java target now has a Java 21 Spring Boot baseline with MyBatis-Plus,
+Flyway, Maven Wrapper, and a real local MySQL startup test. Business code and
+the Python agent remain out of scope until later phases.
+
+## Local MySQL setup
+
+The integration test deliberately uses a separate local schema instead of a
+developer's normal application database. In MySQL Workbench, connect as an
+administrative user and execute:
+
+```text
+scripts/mysql/init-test-database.sql
+```
+
+This creates only the local development schema `javafix_shop_test` and the
+limited account `javafix_test`. The script does not change the MySQL root
+password. Its visible credentials are local test fixtures, not production
+secrets.
+
+Run the full Java test suite on Windows:
+
+```powershell
+cd shop-service
+.\mvnw.cmd test
+```
+
+On Unix-like systems:
+
+```bash
+cd shop-service
+./mvnw test
+```
+
+Runtime database values such as `DB_PASSWORD` should be supplied through the
+environment. Do not commit real credentials.
 
 ## High-level roadmap
 
@@ -59,8 +92,8 @@ yet.
 6. Demonstrate the first test-driven automatic bug fix.
 7. Add reproducible benchmarks, sandboxing, tracing, and evaluation.
 
-The next phase begins only after the Phase 1 structure has been reviewed and
-approved.
+The Phase 2 baseline has passed against local MySQL. Phase 3 begins only after
+explicit review and approval.
 
 ## Repository status
 
@@ -72,4 +105,3 @@ git diff
 ```
 
 No automatic commit is performed by project tooling.
-
