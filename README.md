@@ -18,6 +18,7 @@ loop grounded in source code, command results, automated tests, and Git diffs.
 - [`AGENTS.md`](AGENTS.md) — Codex 当前硬约束
 - [`docs/plans/CURRENT_PHASE.md`](docs/plans/CURRENT_PHASE.md) — 现在做什么
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — 系统总体架构
+- [`docs/GIT_WORKFLOW.md`](docs/GIT_WORKFLOW.md) — Git 推送 / PR 标准
 
 ## Repository structure / 仓库结构
 
@@ -135,4 +136,5 @@ git status
 git diff
 ```
 
-项目工具不会自动提交。
+项目工具不会自动提交 / 推送 / 开 PR。  
+标准链路：**按 Phase 大版本拉分支 → commit → push 功能分支 → 开 PR → 人审 Merge**。详见 [`docs/GIT_WORKFLOW.md`](docs/GIT_WORKFLOW.md)。

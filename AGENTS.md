@@ -70,7 +70,10 @@ Phase 3 MVP 已验收；当前仅维护本阶段。
 - Treat test output, command output, and Git state as **Ground Truth（真实依据）**.
 - Run relevant verification and inspect `git status` and `git diff` before
   reporting completion.
-- **Do not commit automatically unless the user explicitly requests it.**
+- **Do not commit / push / open a PR automatically** unless the user explicitly requests it.
+- **Default AI delivery:** commit → push feature branch → open PR；**human** Reviews and Merges into `main`.
+- **Branch by major version（Phase）:** one `codex/phase-N-...` branch per Phase；reuse within the Phase.
+- Full standard: [`docs/GIT_WORKFLOW.md`](docs/GIT_WORKFLOW.md).
 
 ## Safety rules / 安全规则
 
