@@ -222,6 +222,10 @@ Stopping may also occur because of `max_steps`, timeout, fatal error, or explici
 ## Context Engineering（上下文工程）
 
 **Do not send the whole repository to the LLM. / 不要把整个仓库一次性发送给 LLM。**
+运行时应遵守 [CONTEXT_EFFICIENCY.md](CONTEXT_EFFICIENCY.md) 的最小必要上下文规则：
+先搜索和定位，再读取目标文件、直接依赖与相关测试；不得因“可能有用”而默认加载全仓、完整日志或重复内容。
+长期可继续工作的状态写入 [CURRENT_STATUS.md](CURRENT_STATUS.md)，不依赖会话历史充当项目记忆。
+
 
 ```text
 Task

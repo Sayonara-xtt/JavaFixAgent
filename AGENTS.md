@@ -66,6 +66,10 @@ Phase 3 MVP 已验收；当前仅维护本阶段。
 - Inspect the repository and Git state before making changes.
 - Keep changes scoped to the requested development phase.
 - For testable features and bug fixes, follow **FAIL → PASS → Regression**.
+- **Use the Minimum Necessary Context:** search before reading; load the target file, its direct dependencies, and relevant tests before widening scope.
+- Do not scan the whole repository, reread unchanged files, retain full logs, or make duplicate tool calls unless the task explicitly requires it or the evidence is insufficient.
+- Treat tool output as evidence to summarize, not as conversation history to preserve. Keep reports to key changes, verification, risks, and next steps unless the user asks for detail.
+- For a long task, finish the current atomic unit before the context becomes crowded; record durable state in `docs/agent/CURRENT_STATUS.md` and continue from that summary in a new session when appropriate. See [`docs/agent/CONTEXT_EFFICIENCY.md`](docs/agent/CONTEXT_EFFICIENCY.md).
 - Never weaken, delete, or bypass a valid test to make a build pass.
 - Treat test output, command output, and Git state as **Ground Truth（真实依据）**.
 - Run relevant verification and inspect `git status` and `git diff` before
