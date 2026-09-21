@@ -10,6 +10,8 @@ docs/
 ├── ARCHITECTURE.md           系统总体架构
 ├── GIT_WORKFLOW.md           Git 推送 / PR 标准
 ├── agent/AGENT_RUNTIME.md    Agent 怎么运行
+├── agent/CONTEXT_EFFICIENCY.md 上下文与 Token 使用规则
+├── agent/CURRENT_STATUS.md   可继续工作的精简状态
 ├── java/JAVA_ARCHITECTURE.md Java / 业务不变量（SSOT）
 ├── benchmark/BENCHMARK.md    Benchmark / 评估
 └── plans/
@@ -33,6 +35,7 @@ docs/
 改 Agent:     + agent/AGENT_RUNTIME.md   （须已批准 Phase 4+）
 改 Benchmark: + benchmark/BENCHMARK.md   （须已批准对应阶段）
 提交/推送/PR: + GIT_WORKFLOW.md
+长任务交接:   + agent/CURRENT_STATUS.md（按需读 `agent/CONTEXT_EFFICIENCY.md`）
 ```
 
 英文专业术语在各文档中采用「English（中文）」就地备注，不再维护独立 glossary。
